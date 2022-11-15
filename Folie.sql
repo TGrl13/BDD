@@ -8,7 +8,7 @@ CREATE TABLE Tour(
    Id_Evenement INT,
    Id_Tour INT AUTO_INCREMENT,
    Gain_tour_adherent INT NOT NULL,
-   PRIMARY KEY(Id_Evenement, Id_Tour),
+   PRIMARY KEY(Id_Tour),
    FOREIGN KEY(Id_Evenement) REFERENCES Evenement(Id_Evenement)
 );
 
@@ -27,7 +27,7 @@ CREATE TABLE Numero(
    Id_Numero INT AUTO_INCREMENT,
    Libelle_num VARCHAR(50)  NOT NULL,
    Id_Adherent INT NOT NULL,
-   PRIMARY KEY(Id_Evenement, Id_Tour, Id_Numero),
-   FOREIGN KEY(Id_Evenement, Id_Tour) REFERENCES Tour(Id_Evenement, Id_Tour),
+   PRIMARY KEY(Id_Numero),
+   FOREIGN KEY(Id_Tour) REFERENCES Tour(Id_Tour),
    FOREIGN KEY(Id_Adherent) REFERENCES Adherent(Id_Adherent)
 );
