@@ -18,7 +18,7 @@ CREATE TABLE Chat(
    Date_de_prise_en_charge DATE NOT NULL,
    Etat_de_sante VARCHAR(50)  NOT NULL,
    Situation VARCHAR(50)  NOT NULL,
-   Localisation VARCHAR(50) ,
+   Localisation VARCHAR(100) NOT NULL,
    PRIMARY KEY(Id_Chat),
    FOREIGN KEY(Siret) REFERENCES Organisme_de_prise_en_charge(Siret)
 );
