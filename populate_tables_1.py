@@ -79,6 +79,7 @@ class GenerateData:
         if self.table.name == "Chat":
             with engine.begin() as conn:
                 for _ in range(self.num_records):
+                    date_ins = datetime.datetime.now() - datetime.timedelta(days=random.randint(0,30))
                     insert_stmt = self.table.insert().values(
                         Sexe = faker.random_int(0, 2),
                         Departement_de_decouverte = int(faker.department_number()),
@@ -95,6 +96,7 @@ class GenerateData:
         if self.table.name == "Opération":
             with engine.begin() as conn:
                 for _ in range(self.num_records):
+                    date_ins = datetime.datetime.now() - datetime.timedelta(days=random.randint(0,30))
                     insert_stmt = self.table.insert().values(
                         Date_opération = date_ins.strftime("%Y/%m/%d"),
                         Type_opération = random.choice(type_operation_list),
