@@ -68,7 +68,7 @@ class GenerateData:
             with engine.begin() as conn:
                 for _ in range(self.num_records):
                     insert_stmt = self.table.insert().values(
-                        Id_Evenement = faker.random_int(min=1, max=500), ## sert a generer des noms random dans les entrees
+                        #Id_Evenement = faker.random_int(min=1, max=500), ## sert a generer des noms random dans les entrees
                         Gain_tour_adherent = faker.random_int(min=1, max=1000),
                         Id_Evenement=random.choice(conn.execute(select([Evenement.c.Id_Evenement])).fetchall())[0],  
                     )
@@ -93,11 +93,12 @@ class GenerateData:
                     insert_stmt = self.table.insert().values(
                         transaction_date=date_obj.strftime("%Y/%m/%d"),
                         Id_Evenement = faker.random_int(min=1, max=500),
-                        Id_Tour = faker.radom_int(min=1, max=500),
+                        #Id_Numero = faker.random_int(min=1, max=500),
+                        #Id_Tour = faker.radom_int(min=1, max=500),
                         Libelle_num = faker.random_string(length=15),
-                        Id_Adherent = faker.random_int(min=1, max=10000),
+                        #Id_Adherent = faker.random_int(min=1, max=10000),
                         Id_Tour=random.choice(conn.execute(select([Tour.c.Id_Tour])).fetchall())[0],
-                        Id_Tour=random.choice(conn.execute(select([Adherent.c.Id_Adherent])).fetchall())[0],
+                        Id_Adherent=random.choice(conn.execute(select([Adherent.c.Id_Adherent])).fetchall())[0],
                     )
                     conn.execute(insert_stmt)
 
