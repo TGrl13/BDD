@@ -21,9 +21,9 @@ Opération = metadata.tables["Opération"]
 database=[]
 
 try :
-    database.append((Organisme_de_prise_en_charge,1000))
+    database.append((Organisme_de_prise_en_charge,2000))
     database.append((Chat,2000))
-    database.append((Opération,1000))
+    database.append((Opération,2000))
 except KeyError as err:
     print("error : Metadata.tables "+str(err)+" not found")
 
@@ -69,7 +69,7 @@ class GenerateData:
                     date_ins = datetime.datetime.now() - datetime.timedelta(days=random.randint(0,30))
                     insert_stmt = self.table.insert().values(
                         Nom_organisme = faker.company(),
-                        Adresse_ = faker.providers.address.fr_FR.street_address(),
+                        Adresse_ = faker.providers.address.fr_FR.Provider.street_address(),
                         Date_d_inscription = date_ins.strftime("%Y/%m/%d"),
                         Date_de_création = date_ins.strftime("%Y/%m/%d"),
                         Type_d_organisme = random.choice(type_organisme_list)
@@ -81,13 +81,13 @@ class GenerateData:
                 for _ in range(self.num_records):
                     insert_stmt = self.table.insert().values(
                         Sexe = faker.random_int(0, 2),
-                        Departement_de_decouverte = int(faker.providers.address.fr_FR.department_number()),
+                        Departement_de_decouverte = int(faker.providers.address.fr_FR.Provider.department_number()),
                         Race = random.choice(race_list),
                         Date_reperage = date_ins.strftime("%Y/%m/%d"),
                         Date_de_prise_en_charge = date_ins.strftime("%Y/%m/%d"),
                         Etat_de_sante = random.choice(etat_de_sante_list),
                         Situation = random.choice(situation_list),
-                        Localisation = faker.providers.address.fr_FR.address(),
+                        Localisation = faker.providers.address.fr_FR.Provider.address(),
                         Siret=random.choice(conn.execute(select([Organisme_de_prise_en_charge.c.Siret])).fetchall())[0]
                     )
                     conn.execute(insert_stmt)
