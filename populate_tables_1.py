@@ -11,7 +11,7 @@ metadata = MetaData()
 metadata.reflect(bind=engine)
 
 # Instantiate faker object
-faker = Faker()
+faker = Faker(['fr-FR'])
 
 
 Organisme_de_prise_en_charge = metadata.tables["Organisme_de_prise_en_charge"]
@@ -69,7 +69,7 @@ class GenerateData:
                     date_ins = datetime.datetime.now() - datetime.timedelta(days=random.randint(0,30))
                     insert_stmt = self.table.insert().values(
                         Nom_organisme = faker.company(),
-                        Adresse_ = faker.providers.address.fr_FR.Provider.street_address(),
+                        Adresse_ = faker.address(),
                         Date_d_inscription = date_ins.strftime("%Y/%m/%d"),
                         Date_de_création = date_ins.strftime("%Y/%m/%d"),
                         Type_d_organisme = random.choice(type_organisme_list)
@@ -81,13 +81,13 @@ class GenerateData:
                 for _ in range(self.num_records):
                     insert_stmt = self.table.insert().values(
                         Sexe = faker.random_int(0, 2),
-                        Departement_de_decouverte = int(faker.providers.address.fr_FR.Provider.department_number()),
+                        Departement_de_decouverte = int(faker.department_number()),
                         Race = random.choice(race_list),
                         Date_reperage = date_ins.strftime("%Y/%m/%d"),
                         Date_de_prise_en_charge = date_ins.strftime("%Y/%m/%d"),
                         Etat_de_sante = random.choice(etat_de_sante_list),
                         Situation = random.choice(situation_list),
-                        Localisation = faker.providers.address.fr_FR.Provider.address(),
+                        Localisation = faker.address(),
                         Siret=random.choice(conn.execute(select([Organisme_de_prise_en_charge.c.Siret])).fetchall())[0]
                     )
                     conn.execute(insert_stmt)
