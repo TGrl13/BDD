@@ -1,7 +1,7 @@
 CREATE TABLE Organisme_de_prise_en_charge(
    Siret INT AUTO_INCREMENT,
    Nom_organisme VARCHAR(50)  NOT NULL,
-   Adresse_ VARCHAR(50)  NOT NULL,
+   Adresse_ VARCHAR(100)  NOT NULL,
    Date_d_inscription DATE NOT NULL,
    Date_de_création DATE NOT NULL,
    Type_d_organisme VARCHAR(50)  NOT NULL,
