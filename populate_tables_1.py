@@ -41,7 +41,7 @@ situation_list = ["Errance", "En attente", "Placé"]
 # etat_de_sante list
 etat_de_sante_list = ["Enceinte", "Calculs urinaires", "A ingéré un corps étranger", "Fracture", "Tarte dans les dents"]
 
-# etat_de_sante list
+# type_organisme list
 type_organisme_list = ["Vétérinaire", "Association", "Refuge", "SPA"]
 
 
@@ -82,7 +82,7 @@ class GenerateData:
                     date_ins = datetime.datetime.now() - datetime.timedelta(days=random.randint(0,30))
                     insert_stmt = self.table.insert().values(
                         Sexe = faker.random_int(0, 2),
-                        Departement_de_decouverte = int(faker.department_number()),
+                        Departement_de_decouverte = int(1, 95),
                         Race = random.choice(race_list),
                         Date_reperage = date_ins.strftime("%Y/%m/%d"),
                         Date_de_prise_en_charge = date_ins.strftime("%Y/%m/%d"),
