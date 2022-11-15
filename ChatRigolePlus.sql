@@ -4,14 +4,14 @@ CREATE TABLE Organisme_de_prise_en_charge(
    Adresse_ VARCHAR(50)  NOT NULL,
    Date_d_inscription DATE NOT NULL,
    Date_de_création DATE NOT NULL,
-   Type_d_organisme BOOLEAN NOT NULL,
+   Type_d_organisme VARCHAR(50)  NOT NULL,
    PRIMARY KEY(Siret)
 );
 
 CREATE TABLE Chat(
    Id_Chat INT AUTO_INCREMENT,
    Siret INT,
-   Sexe BOOLEAN NOT NULL,
+   Sexe INT NOT NULL,
    Departement_de_decouverte INT NOT NULL,
    Race VARCHAR(50)  NOT NULL,
    Date_reperage DATE NOT NULL,
