@@ -21,9 +21,9 @@ Opération = metadata.tables["Opération"]
 database=[]
 
 try :
-    database.append((Organisme_de_prise_en_charge,2000))
-    database.append((Chat,2000))
-    database.append((Opération,2000))
+    database.append((Organisme_de_prise_en_charge,5000))
+    database.append((Chat,20000))
+    database.append((Opération,20000))
 except KeyError as err:
     print("error : Metadata.tables "+str(err)+" not found")
 
@@ -66,12 +66,12 @@ class GenerateData:
         if self.table.name == "Organisme_de_prise_en_charge":
             with engine.begin() as conn:
                 for _ in range(self.num_records):
-                    date_ins = datetime.datetime.now() - datetime.timedelta(days=random.randint(0,30))
+                    date_obj = datetime.datetime.now() - datetime.timedelta(days=random.randint(0,30))
                     insert_stmt = self.table.insert().values(
                         Nom_organisme = faker.company(),
                         Adresse_ = faker.address(),
-                        Date_d_inscription = date_ins.strftime("%Y/%m/%d"),
-                        Date_de_création = date_ins.strftime("%Y/%m/%d"),
+                        Date_d_inscription = date_obj.strftime("%Y/%m/%d"),
+                        Date_de_création = date_obj.strftime("%Y/%m/%d"),
                         Type_d_organisme = random.choice(type_organisme_list)
                     )
                     conn.execute(insert_stmt)
@@ -79,26 +79,26 @@ class GenerateData:
         if self.table.name == "Chat":
             with engine.begin() as conn:
                 for _ in range(self.num_records):
-                    date_ins = datetime.datetime.now() - datetime.timedelta(days=random.randint(0,30))
+                    date_obj = datetime.datetime.now() - datetime.timedelta(days=random.randint(0,30))
                     insert_stmt = self.table.insert().values(
                         Sexe = faker.random_int(0, 2),
                         Departement_de_decouverte = faker.random_int(1, 95),
                         Race = random.choice(race_list),
-                        Date_reperage = date_ins.strftime("%Y/%m/%d"),
-                        Date_de_prise_en_charge = date_ins.strftime("%Y/%m/%d"),
+                        Date_reperage = date_obj.strftime("%Y/%m/%d"),
+                        Date_de_prise_en_charge = date_obj.strftime("%Y/%m/%d"),
                         Etat_de_sante = random.choice(etat_de_sante_list),
                         Situation = random.choice(situation_list),
                         Localisation = faker.address(),
-                        Siret=random.choice(conn.execute(select([Organisme_de_prise_en_charge.c.Siret])).fetchall())[0]
+                        Siret = random.choice(conn.execute(select([Organisme_de_prise_en_charge.c.Siret])).fetchall())[0]
                     )
                     conn.execute(insert_stmt)
 
         if self.table.name == "Opération":
             with engine.begin() as conn:
                 for _ in range(self.num_records):
-                    date_ins = datetime.datetime.now() - datetime.timedelta(days=random.randint(0,30))
+                    date_obj = datetime.datetime.now() - datetime.timedelta(days=random.randint(0,30))
                     insert_stmt = self.table.insert().values(
-                        Date_opération = date_ins.strftime("%Y/%m/%d"),
+                        Date_opération = date_obj.strftime("%Y/%m/%d"),
                         Type_opération = random.choice(type_operation_list),
                         Id_Chat = random.choice(conn.execute(select([Chat.c.Id_Chat])).fetchall())[0],
                         Siret = random.choice(conn.execute(select([Organisme_de_prise_en_charge.c.Siret])).fetchall())[0]

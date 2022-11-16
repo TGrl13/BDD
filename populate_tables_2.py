@@ -22,11 +22,11 @@ S_enregistre = metadata.tables["S_enregistre"]
 database=[]
 
 try :
-    database.append((Enregistrement,2000))
-    database.append((Medecin,2000))
-    database.append((Patient,2000))
-    database.append((Analyse,2000))
-    database.append((S_enregistre,2000))
+    database.append((Enregistrement,1000))
+    database.append((Medecin,100))
+    database.append((Patient,1000))
+    database.append((Analyse,1000))
+    database.append((S_enregistre,1000))
 except KeyError as err:
     print("error : Metadata.tables "+str(err)+" not found")
 
