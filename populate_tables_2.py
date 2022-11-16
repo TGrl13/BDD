@@ -85,7 +85,7 @@ class GenerateData:
                         Prenom_patient = faker.first_name(),
                         Date_de_naissance = faker.date_of_birth(minimum_age=1, maximum_age=120),
                         Adresse_patient = faker.address(),
-                        Poids_patient = faker.pydecimal(left_digits=None, right_digits=1, positive=True, min_value=2.5, max_value=200),
+                        Poids_patient = faker.pydecimal(left_digits=3, right_digits=1, positive=True, min_value=2.5, max_value=200),
                         Taille_patient = faker.random_int(45, 250),
                         NSS_patient = faker.ssn(),
                         Medecin_traitant = faker.name(),
