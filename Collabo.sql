@@ -1,7 +1,7 @@
 CREATE TABLE Enregistrement(
    Numero_de_ticket INT AUTO_INCREMENT,
    Date_Enregistrement DATE NOT NULL,
-   Heure_Enregistrement TIME NOT NULL
+   Heure_Enregistrement TIME NOT NULL,
    PRIMARY KEY(Numero_de_ticket)
 );
 
