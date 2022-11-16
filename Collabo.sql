@@ -24,7 +24,7 @@ CREATE TABLE Patient(
    NSS_patient VARCHAR(50),
    Medecin_traitant VARCHAR(50),
    Autorisation_partage BOOLEAN,
-   Numéro_RPPS VARCHAR(50)  NOT NULL,
+   Numéro_RPPS INT NOT NULL,
    PRIMARY KEY(Numero_patient),
    FOREIGN KEY(Numéro_RPPS) REFERENCES Medecin(Numéro_RPPS)
 );
