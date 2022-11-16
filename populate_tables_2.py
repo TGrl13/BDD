@@ -61,7 +61,7 @@ class GenerateData:
                 for _ in range(self.num_records):
                     date_obj = datetime.datetime.now() - datetime.timedelta(days=random.randint(0,30))
                     insert_stmt = self.table.insert().values(
-                        Date_heure = date_obj.strftime("%Y/%m/%d, %H:%M:%S")
+                        Date_heure = date_obj.strftime("%Y/%m/%d%H:%M:%S")
                     )
                     conn.execute(insert_stmt)
 
