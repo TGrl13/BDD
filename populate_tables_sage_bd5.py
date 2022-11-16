@@ -129,9 +129,10 @@ class GenerateData:
 
         if self.table.name == "Dossier_social":
             with engine.begin() as conn:
+                personnes = conn.execute(select([Personne.c.id_personne])).fetchall()
                 for _ in range(self.num_records):
                     insert_stmt = self.table.insert().values(
-                        id_personne = random.choice(conn.execute(select([Personne.c.id_personne])).fetchall())[0]
+                        id_personne = personnes[_]['id_personne']
                     )
                     conn.execute(insert_stmt)
                     
