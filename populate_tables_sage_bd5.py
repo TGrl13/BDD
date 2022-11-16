@@ -131,7 +131,7 @@ class GenerateData:
             with engine.begin() as conn:
                 for _ in range(self.num_records):
                     insert_stmt = self.table.insert().values(
-                        personne = conn.execute(select([Personne.c.id_personne])).fetchall()
+                        id_personne = random.choice(conn.execute(select([Personne.c.id_personne])).fetchall())[0]
                     )
                     conn.execute(insert_stmt)
                     
