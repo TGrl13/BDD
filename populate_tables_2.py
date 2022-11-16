@@ -60,7 +60,7 @@ class GenerateData:
             with engine.begin() as conn:
                 for _ in range(self.num_records):
                     insert_stmt = self.table.insert().values(
-                        Date_heure = faker.date_time().strftime("%Y/%m/%d, %H:%M:%S"),
+                        Date_heure = faker.date_time(tzinfo: Optional[datetime.tzinfo] = 'Europe/Paris', end_datetime: Union[datetime.date, datetime.datetime, datetime.timedelta, str, int, None] = None) .strftime("%Y/%m/%d, %H:%M:%S"),
                     )
                     conn.execute(insert_stmt)
 
@@ -78,7 +78,6 @@ class GenerateData:
         if self.table.name == "Patient":
             with engine.begin() as conn:
                 for _ in range(self.num_records):
-                    date_ins = datetime.datetime.now() - datetime.timedelta(days=random.randint(0,30))
                     insert_stmt = self.table.insert().values(
                         Nom_patient = faker.last_name(),
                         Prenom_patient = faker.first_name(),
