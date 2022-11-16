@@ -20,7 +20,7 @@ CREATE TABLE Patient(
    Prenom_patient VARCHAR(50),
    Date_de_naissance DATE,
    Adresse_patient VARCHAR(100),
-   Poids_patient DECIMAL(3,1),
+   Poids_patient DECIMAL(4,1),
    Taille_patient INT NOT NULL,
    NSS_patient VARCHAR(50),
    Medecin_traitant VARCHAR(50),

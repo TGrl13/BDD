@@ -83,7 +83,7 @@ class GenerateData:
                     insert_stmt = self.table.insert().values(
                         Nom_patient = faker.last_name(),
                         Prenom_patient = faker.first_name(),
-                        Date_de_naissance = faker.date_of_birth(minimum_age=1, maximum_age=120),
+                        Date_de_naissance = faker.date_of_birth(minimum_age=1, maximum_age=120).strftime("%Y/%m/%d"),
                         Adresse_patient = faker.address(),
                         Poids_patient = faker.pydecimal(left_digits=None, right_digits=1, positive=True, min_value=2, max_value=200),
                         Taille_patient = faker.random_int(45, 250),
