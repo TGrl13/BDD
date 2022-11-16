@@ -44,7 +44,7 @@ CREATE TABLE Analyse(
 CREATE TABLE S_enregistre(
    Id_S_enregistre INT AUTO_INCREMENT,
    Numero_patient INT NOT NULL,
-   Numero_de_ticket VARCHAR(50),
+   Numero_de_ticket INT NOT NULL,
    PRIMARY KEY(Id_S_enregistre),
    FOREIGN KEY(Numero_patient) REFERENCES Patient(Numero_patient),
    FOREIGN KEY(Numero_de_ticket) REFERENCES Enregistrement(Numero_de_ticket)
