@@ -35,7 +35,7 @@ CREATE TABLE Analyse(
    Date_analyse DATE,
    Heure_analyse TIME,
    Type_analyse VARCHAR(50),
-   Forfait_analyse VARCHAR(50),
+   Forfait_analyse VARCHAR(100),
    Vecteur_analyse VARCHAR(50),
    Numero_patient INT NOT NULL,
    PRIMARY KEY(Numéro_analyse),
