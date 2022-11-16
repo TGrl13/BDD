@@ -164,8 +164,8 @@ class GenerateData:
                         nom_formation = random.choice(nom_formation),
                         thematique = random.choice(thematique_formation),
                         date_formation = date_obj.strftime("%Y/%m/%d"),
-                        heure_debut_formation = faker.time("%H:%M%S"),
-                        heure_fin_formation = faker.time("%H:%M%S")
+                        heure_debut_formation = faker.time(),
+                        heure_fin_formation = faker.time()
                     )
                     conn.execute(insert_stmt)
         
@@ -176,8 +176,8 @@ class GenerateData:
                     insert_stmt = self.table.insert().values(
                         type_reunion = random.choice(type_reunion),
                         date_reunion = date_obj.strftime("%Y/%m/%d"),
-                        heure_debut_reunion = faker.time("%H:%M%S"),
-                        heure_fin_reunion = faker.time("%H:%M%S")
+                        heure_debut_reunion = faker.time(),
+                        heure_fin_reunion = faker.time()
                     )
                     conn.execute(insert_stmt)
                     
@@ -205,8 +205,8 @@ class GenerateData:
                     date_obj = datetime.datetime.now() - datetime.timedelta(days=random.randint(0,30))
                     insert_stmt = self.table.insert().values(
                         date_rdv =  date_obj.strftime("%Y/%m/%d"),
-                        heure_debut_rdv = faker.time("%H:%M%S"),
-                        heure_fin_rdv = faker.time("%H:%M%S"),
+                        heure_debut_rdv = faker.time(),
+                        heure_fin_rdv = faker.time(),
                         type_prise_rdv = random.choice(type_reunion),
                         motif_absence_personne =  random.choice(type_absence),
                         motif_absence_agent = random.choice(type_absence),
