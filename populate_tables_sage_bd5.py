@@ -131,7 +131,7 @@ class GenerateData:
             with engine.begin() as conn:
                 for _ in range(self.num_records):
                     insert_stmt = self.table.insert().values(
-                        personnes = conn.execute(select([Personne.c.id_personne])).fetchall()
+                        personne = conn.execute(select([Personne.c.id_personne])).fetchall()
                     )
                     conn.execute(insert_stmt)
                     
