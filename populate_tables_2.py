@@ -62,7 +62,7 @@ class GenerateData:
                     date_obj = datetime.datetime.now() - datetime.timedelta(days=random.randint(0,30))
                     insert_stmt = self.table.insert().values(
                          Date_Enregistrement = date_obj.strftime("%Y/%m/%d"),
-                         Heure_Enregistrement = date_obj.strftime("%H/%M/%S")
+                         Heure_Enregistrement = faker.time().strftime("%H/%M/%S")
                     )
                     conn.execute(insert_stmt)
 
@@ -100,7 +100,7 @@ class GenerateData:
                     date_obj = datetime.datetime.now() - datetime.timedelta(days=random.randint(0,30))
                     insert_stmt = self.table.insert().values(
                         Date_analyse = date_obj.strftime("%Y/%m/%d"),
-                        Heure_analyse = date_obj.strftime("%H/%M/%S"),
+                        Heure_analyse = faker.time().strftime("%H/%M/%S"),
                         Type_analyse = random.choice(type_list),
                         Forfait_analyse = random.choice(type_list) + ", " + random.choice(type_list) + ", " + random.choice(type_list),
                         Vecteur_analyse = random.choice(vecteur_list),
