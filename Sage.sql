@@ -155,7 +155,7 @@ CREATE TABLE Associer_problématique(
    id_Associer_problématique INT AUTO_INCREMENT,
    id_rdv INT NOT NULL,
    id_problematique INT NOT NULL,
-   PRIMARY KEY(id__Associer_problématique),
+   PRIMARY KEY(id_Associer_problématique),
    FOREIGN KEY(id_rdv) REFERENCES Rendez_vous(id_rdv),
    FOREIGN KEY(id_problematique) REFERENCES Problématique(id_problematique)
 );
